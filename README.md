@@ -1,9 +1,14 @@
-# api documentation for  [express-graphql (v0.6.4)](https://github.com/graphql/express-graphql#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-express-graphql.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-express-graphql) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-express-graphql.svg)](https://travis-ci.org/npmdoc/node-npmdoc-express-graphql)
+# npmdoc-express-graphql
+
+#### api documentation for  [express-graphql (v0.6.4)](https://github.com/graphql/express-graphql#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-express-graphql.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-express-graphql) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-express-graphql.svg)](https://travis-ci.org/npmdoc/node-npmdoc-express-graphql)
+
 #### Production ready GraphQL HTTP middleware.
 
-[![NPM](https://nodei.co/npm/express-graphql.png?downloads=true)](https://www.npmjs.com/package/express-graphql)
+[![NPM](https://nodei.co/npm/express-graphql.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/express-graphql)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-express-graphql/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-express-graphql_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-express-graphql/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-express-graphql/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-express-graphql/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-express-graphql/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-express-graphql/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-express-graphql/build/screenCapture.npmPackageListing.svg)
 
@@ -31,16 +36,13 @@
     "contributors": [
         {
             "name": "Lee Byron",
-            "email": "lee@leebyron.com",
             "url": "http://leebyron.com/"
         },
         {
-            "name": "Daniel Schafer",
-            "email": "dschafer@fb.com"
+            "name": "Daniel Schafer"
         },
         {
-            "name": "Caleb Meredith",
-            "email": "calebmeredith8@gmail.com"
+            "name": "Caleb Meredith"
         }
     ],
     "dependencies": {
@@ -106,16 +108,13 @@
     "main": "dist/index.js",
     "maintainers": [
         {
-            "name": "fb",
-            "email": "opensource+npm@fb.com"
+            "name": "fb"
         },
         {
-            "name": "leebyron",
-            "email": "lee@leebyron.com"
+            "name": "leebyron"
         },
         {
-            "name": "wincent",
-            "email": "greg@hurrell.net"
+            "name": "wincent"
         }
     ],
     "name": "express-graphql",
@@ -126,7 +125,6 @@
     "peerDependencies": {
         "graphql": "^0.5.0-b || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0"
     },
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/graphql/express-graphql.git"
@@ -145,47 +143,6 @@
     },
     "version": "0.6.4"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module express-graphql](#apidoc.module.express-graphql)
-1.  [function <span class="apidocSignatureSpan">express-graphql.</span>getGraphQLParams (request)](#apidoc.element.express-graphql.getGraphQLParams)
-
-
-
-# <a name="apidoc.module.express-graphql"></a>[module express-graphql](#apidoc.module.express-graphql)
-
-#### <a name="apidoc.element.express-graphql.getGraphQLParams"></a>[function <span class="apidocSignatureSpan">express-graphql.</span>getGraphQLParams (request)](#apidoc.element.express-graphql.getGraphQLParams)
-- description and source-code
-```javascript
-function getGraphQLParams(request) {
-  return (0, _parseBody.parseBody)(request).then(function (bodyData) {
-    var urlData = request.url && _url2.default.parse(request.url, true).query || {};
-    return parseGraphQLParams(urlData, bodyData);
-  });
-}
-```
-- example usage
-```shell
-...
-Given an HTTP Request, this returns a Promise for the parameters relevant to
-running a GraphQL request. This function is used internally to handle the
-incoming request, you may use it directly for building other similar services.
-
-'''js
-const graphqlHTTP = require('express-graphql');
-
-graphqlHTTP.getGraphQLParams(request).then(params => {
-  // do something...
-})
-'''
-
-
-## Debugging Tips
-...
 ```
 
 
