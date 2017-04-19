@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.express-graphql.express-graphql">
+            function <span class="apidocSignatureSpan"></span>express-graphql
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.express-graphql.getGraphQLParams">
             function <span class="apidocSignatureSpan">express-graphql.</span>getGraphQLParams
             <span class="apidocSignatureSpan">(request)</span>
@@ -76,6 +85,123 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.express-graphql" id="apidoc.module.express-graphql">module express-graphql</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-graphql.express-graphql" id="apidoc.element.express-graphql.express-graphql">
+        function <span class="apidocSignatureSpan"></span>express-graphql
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function graphqlHTTP(options) {
+  if (!options) {
+    throw new Error(&#x27;GraphQL middleware requires options.&#x27;);
+  }
+
+  return function (request, response) {
+    // Higher scoped variables are referred to at various stages in the
+    // asynchronous state machine below.
+    var schema = void 0;
+    var context = void 0;
+    var rootValue = void 0;
+    var pretty = void 0;
+    var graphiql = void 0;
+    var formatErrorFn = void 0;
+    var extensionsFn = void 0;
+    var showGraphiQL = void 0;
+    var query = void 0;
+    var documentAST = void 0;
+    var variables = void 0;
+    var operationName = void 0;
+    var validationRules = void 0;
+
+    // Promises are used as a mechanism for capturing any thrown errors during
+    // the asynchronous process below.
+
+    // Resolve the Options to get OptionsData.
+    return new Promise(function (resolve) {
+      resolve(typeof options === &#x27;function&#x27; ? options(request, response) : options);
+    }).then(function (optionsData) {
+      // Assert that optionsData is in fact an Object.
+      if (!optionsData || (typeof optionsData === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(optionsData)) !== &#x27;object&#x27;) {
+        throw new Error(&#x27;GraphQL middleware option function must return an options object &#x27; + &#x27;or a promise which will be resolved
+ to an options object.&#x27;);
+      }
+
+      // Assert that schema is required.
+      if (!optionsData.schema) {
+        throw new Error(&#x27;GraphQL middleware options must contain a schema.&#x27;);
+      }
+
+      // Collect information from the options data object.
+      schema = optionsData.schema;
+      context = optionsData.context || request;
+      rootValue = optionsData.rootValue;
+      pretty = optionsData.pretty;
+      graphiql = optionsData.graphiql;
+      formatErrorFn = optionsData.formatError;
+      extensionsFn = optionsData.extensions;
+
+      validationRules = _graphql.specifiedRules;
+      if (optionsData.validationRules) {
+        validationRules = validationRules.concat(optionsData.validationRules);
+      }
+
+      // GraphQL HTTP only supports GET and POST methods.
+      if (request.method !== &#x27;GET&#x27; &#x26;&#x26; request.method !== &#x27;POST&#x27;) {
+        response.setHeader(&#x27;Allow&#x27;, &#x27;GET, POST&#x27;);
+        throw (0, _httpErrors2.default)(405, &#x27;GraphQL only supports GET and POST requests.&#x27;);
+      }
+
+      // Parse the Request to get GraphQL request parameters.
+      return getGraphQLParams(request);
+    }).then(function (params) {
+      // Get GraphQL params from the request and POST body data.
+      query = params.query;
+      variables = params.variables;
+      operationName = params.operationName;
+      showGraphiQL = graphiql &#x26;&#x26; canDisplayGraphiQL(request, params);
+
+      // If there is no query, but GraphiQL will be displayed, do not produce
+      // a result, otherwise return a 400: Bad Request.
+      if (!query) {
+        if (showGraphiQL) {
+          return null;
+        }
+        throw (0, _httpErrors2.default)(400, &#x27;Must provide query string.&#x27;);
+      }
+
+      // GraphQL source.
+      var source = new _graphql.Source(query, &#x27;GraphQL request&#x27;);
+
+      // Parse source to AST, reporting any syntax error.
+      try {
+        documentAST = (0, _graphql.parse)(source);
+      } catch (syntaxError) {
+        // Return 400: Bad Request if any syntax errors errors exist.
+        response.statusCode = 400;
+        return { errors: [syntaxError] };
+      }
+
+      // Validate AST, reporting any errors.
+      var validationErrors = (0, _graphql.validate)(schema, documentAST, validationRules);
+      if (validationErrors.length &#x3e; 0) {
+        // Return 400: Bad Request if any validation errors exist.
+        response.statusCode = 400;
+        return { errors: validationErrors };
+      }
+
+      // Only query operations are allowed on GET requests.
+      if (request.method === &#x27;GET&#x27;) {
+        // Determine if this GET request will perform a non-query.
+        var operationAST = (0, _graphql.getOperationAST)(documentAST, operationName);
+        if (operationAST &#x26;&#x26; operationAST.operation !== &#x27;query&#x27;) {
+          // If GraphiQL can be shown, do not perform this query, but
+          // provide ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>

@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/graphql/express-graphql#readme"
-
-    >express-graphql (v0.6.4)</a>
+    <a href="https://github.com/graphql/express-graphql#readme">express-graphql (v0.6.4)</a>
 </h1>
 <h4>Production ready GraphQL HTTP middleware.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.express-graphql">module express-graphql</a><ol>
 
@@ -96,7 +89,7 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function graphqlHTTP(options) {
   if (!options) {
-    throw new Error(&#x27;GraphQL middleware requires options.&#x27;);
+    throw new Error('GraphQL middleware requires options.');
   }
 
   return function (request, response) {
@@ -121,17 +114,17 @@
 
     // Resolve the Options to get OptionsData.
     return new Promise(function (resolve) {
-      resolve(typeof options === &#x27;function&#x27; ? options(request, response) : options);
+      resolve(typeof options === 'function' ? options(request, response) : options);
     }).then(function (optionsData) {
       // Assert that optionsData is in fact an Object.
-      if (!optionsData || (typeof optionsData === &#x27;undefined&#x27; ? &#x27;undefined&#x27; : _typeof(optionsData)) !== &#x27;object&#x27;) {
-        throw new Error(&#x27;GraphQL middleware option function must return an options object &#x27; + &#x27;or a promise which will be resolved
- to an options object.&#x27;);
+      if (!optionsData || (typeof optionsData === 'undefined' ? 'undefined' : _typeof(optionsData)) !== 'object') {
+        throw new Error('GraphQL middleware option function must return an options object ' + 'or a promise which will be resolved
+ to an options object.');
       }
 
       // Assert that schema is required.
       if (!optionsData.schema) {
-        throw new Error(&#x27;GraphQL middleware options must contain a schema.&#x27;);
+        throw new Error('GraphQL middleware options must contain a schema.');
       }
 
       // Collect information from the options data object.
@@ -149,9 +142,9 @@
       }
 
       // GraphQL HTTP only supports GET and POST methods.
-      if (request.method !== &#x27;GET&#x27; &#x26;&#x26; request.method !== &#x27;POST&#x27;) {
-        response.setHeader(&#x27;Allow&#x27;, &#x27;GET, POST&#x27;);
-        throw (0, _httpErrors2.default)(405, &#x27;GraphQL only supports GET and POST requests.&#x27;);
+      if (request.method !== 'GET' &amp;&amp; request.method !== 'POST') {
+        response.setHeader('Allow', 'GET, POST');
+        throw (0, _httpErrors2.default)(405, 'GraphQL only supports GET and POST requests.');
       }
 
       // Parse the Request to get GraphQL request parameters.
@@ -161,7 +154,7 @@
       query = params.query;
       variables = params.variables;
       operationName = params.operationName;
-      showGraphiQL = graphiql &#x26;&#x26; canDisplayGraphiQL(request, params);
+      showGraphiQL = graphiql &amp;&amp; canDisplayGraphiQL(request, params);
 
       // If there is no query, but GraphiQL will be displayed, do not produce
       // a result, otherwise return a 400: Bad Request.
@@ -169,11 +162,11 @@
         if (showGraphiQL) {
           return null;
         }
-        throw (0, _httpErrors2.default)(400, &#x27;Must provide query string.&#x27;);
+        throw (0, _httpErrors2.default)(400, 'Must provide query string.');
       }
 
       // GraphQL source.
-      var source = new _graphql.Source(query, &#x27;GraphQL request&#x27;);
+      var source = new _graphql.Source(query, 'GraphQL request');
 
       // Parse source to AST, reporting any syntax error.
       try {
@@ -186,17 +179,17 @@
 
       // Validate AST, reporting any errors.
       var validationErrors = (0, _graphql.validate)(schema, documentAST, validationRules);
-      if (validationErrors.length &#x3e; 0) {
+      if (validationErrors.length &gt; 0) {
         // Return 400: Bad Request if any validation errors exist.
         response.statusCode = 400;
         return { errors: validationErrors };
       }
 
       // Only query operations are allowed on GET requests.
-      if (request.method === &#x27;GET&#x27;) {
+      if (request.method === 'GET') {
         // Determine if this GET request will perform a non-query.
         var operationAST = (0, _graphql.getOperationAST)(documentAST, operationName);
-        if (operationAST &#x26;&#x26; operationAST.operation !== &#x27;query&#x27;) {
+        if (operationAST &amp;&amp; operationAST.operation !== 'query') {
           // If GraphiQL can be shown, do not perform this query, but
           // provide ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -213,7 +206,7 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getGraphQLParams(request) {
   return (0, _parseBody.parseBody)(request).then(function (bodyData) {
-    var urlData = request.url &#x26;&#x26; _url2.default.parse(request.url, true).query || {};
+    var urlData = request.url &amp;&amp; _url2.default.parse(request.url, true).query || {};
     return parseGraphQLParams(urlData, bodyData);
   });
 }</pre></li>
@@ -223,9 +216,9 @@ running a GraphQL request. This function is used internally to handle the
 incoming request, you may use it directly for building other similar services.
 
 ```js
-const graphqlHTTP = require(&#x27;express-graphql&#x27;);
+const graphqlHTTP = require('express-graphql');
 
-graphqlHTTP.<span class="apidocCodeKeywordSpan">getGraphQLParams</span>(request).then(params =&#x3e; {
+graphqlHTTP.<span class="apidocCodeKeywordSpan">getGraphQLParams</span>(request).then(params =&gt; {
   // do something...
 })
 ```
@@ -244,3 +237,4 @@ graphqlHTTP.<span class="apidocCodeKeywordSpan">getGraphQLParams</span>(request)
     ]
 </div>
 </div>
+</body></html>

@@ -1,21 +1,24 @@
-<svg height="286" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="286" fill="#555" width="720"></rect>
+<svg height="334" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="334" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">├─┬ express-graphql@0.6.4 </tspan>
-<tspan x="10" y="42">│ ├─┬ accepts@1.3.3 </tspan>
-<tspan x="10" y="58">│ │ ├─┬ mime-types@2.1.15 </tspan>
-<tspan x="10" y="74">│ │ │ └── mime-db@1.27.0 </tspan>
-<tspan x="10" y="90">│ │ └── negotiator@0.6.1 </tspan>
-<tspan x="10" y="106">│ ├── content-type@1.0.2 </tspan>
-<tspan x="10" y="122">│ ├─┬ http-errors@1.6.1 </tspan>
-<tspan x="10" y="138">│ │ ├── depd@1.1.0 </tspan>
-<tspan x="10" y="154">│ │ ├── inherits@2.0.3 </tspan>
-<tspan x="10" y="170">│ │ ├── setprototypeof@1.0.3 </tspan>
-<tspan x="10" y="186">│ │ └── statuses@1.3.1 </tspan>
-<tspan x="10" y="202">│ └─┬ raw-body@2.2.0 </tspan>
-<tspan x="10" y="218">│   ├── bytes@2.4.0 </tspan>
-<tspan x="10" y="234">│   ├── iconv-lite@0.4.15 </tspan>
-<tspan x="10" y="250">│   └── unpipe@1.0.0 </tspan>
-<tspan x="10" y="266">└── UNMET PEER DEPENDENCY graphql@^0.5.0-b || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0</tspan>
+<tspan x="10" y="26">2 megabytes installed</tspan>
+<tspan x="10" y="42"></tspan>
+<tspan x="10" y="58">node_modules</tspan>
+<tspan x="10" y="74">├─┬ express-graphql@0.6.4 </tspan>
+<tspan x="10" y="90">│ ├─┬ accepts@1.3.3 </tspan>
+<tspan x="10" y="106">│ │ ├─┬ mime-types@2.1.15 </tspan>
+<tspan x="10" y="122">│ │ │ └── mime-db@1.27.0 </tspan>
+<tspan x="10" y="138">│ │ └── negotiator@0.6.1 </tspan>
+<tspan x="10" y="154">│ ├── content-type@1.0.2 </tspan>
+<tspan x="10" y="170">│ ├─┬ http-errors@1.6.1 </tspan>
+<tspan x="10" y="186">│ │ ├── depd@1.1.0 </tspan>
+<tspan x="10" y="202">│ │ ├── inherits@2.0.3 </tspan>
+<tspan x="10" y="218">│ │ ├── setprototypeof@1.0.3 </tspan>
+<tspan x="10" y="234">│ │ └── statuses@1.3.1 </tspan>
+<tspan x="10" y="250">│ └─┬ raw-body@2.2.0 </tspan>
+<tspan x="10" y="266">│   ├── bytes@2.4.0 </tspan>
+<tspan x="10" y="282">│   ├── iconv-lite@0.4.15 </tspan>
+<tspan x="10" y="298">│   └── unpipe@1.0.0 </tspan>
+<tspan x="10" y="314">└── UNMET PEER DEPENDENCY graphql@^0.5.0-b || ^0.6.0 || ^0.7.0 || ^0.8.0-b || ^0.9.0</tspan>
 </text>
 </svg>
